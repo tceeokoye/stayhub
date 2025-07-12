@@ -150,7 +150,7 @@ export default function HotelList({ searchTerm, currentPage }: HotelListProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[21px]">
         {paginatedHotels.length === 0 ? (
           <p className="col-span-full text-center text-gray-500">
-            No hotels found for "{searchTerm}"
+            No hotels found for &quot;{searchTerm}&quot;
           </p>
         ) : (
           paginatedHotels.map((hotel, index) => (
@@ -185,7 +185,12 @@ export default function HotelList({ searchTerm, currentPage }: HotelListProps) {
                 </div>
 
                 <p className="flex items-center gap-1 font-geistNormal text-sm py-1 text-gray-600">
-                  <Image src={locationIcon} alt="Location" width={14} height={14} />
+                  <Image
+                    src={locationIcon}
+                    alt="Location"
+                    width={14}
+                    height={14}
+                  />
                   {hotel.location}
                 </p>
 
@@ -200,7 +205,12 @@ export default function HotelList({ searchTerm, currentPage }: HotelListProps) {
                     <Image src={carIcon} alt="Parking" width={20} height={20} />
                   )}
                   {hotel.features.kitchen && (
-                    <Image src={coffeeCup} alt="Kitchen" width={20} height={20} />
+                    <Image
+                      src={coffeeCup}
+                      alt="Kitchen"
+                      width={20}
+                      height={20}
+                    />
                   )}
                 </div>
               </div>

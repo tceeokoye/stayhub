@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/logo/logo.svg";
-import LoginInput from "./logins/components/LoginInput";
+import LoginInput from "@/components/logins/LoginInput";
 
 export default function Logings() {
   return (
-    <main className="w-full h-full  pt6229">
+    <main className="w-full h-full  pt6229">n
       <div className="w350  h483 m-auto bg-050505">
         <div className="w-full h4043 flex justify-center items-center">
           <Link href="/">
