@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 
-import dropdownIcon from "@/assets/icon/dropdown-icon.svg";
+import dropdownIcon from "@/assets/icon/dropdown-Icon.svg";
 import logoImg from "@/assets/logo/logo.svg";
 import QuestionMark from "@/assets/icon/message-question-circle.svg";
 import manueIcon from "@/assets/icon/manueIcon.svg"
