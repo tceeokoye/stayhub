@@ -65,20 +65,36 @@ export default function Header() {
       <button
         onClick={() => {
           if (open) {
-            handleClose(); // play slide‑up, then unmount
+            handleClose();
           } else {
-            setOpen(true); // show modal with slide‑down
+            setOpen(true);
           }
         }}
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
-        className="md:hidden w-10.5 h-10.5 rounded-full bg-[#FAFAFA] flex items-center justify-center"
+        className="md:hidden w-10.5 h-10.5 rounded-full bg-[#FAFAFA] flex items-center justify-center relative overflow-hidden"
       >
-        {open ? (
-          <Image src={closeIcon} alt="Close" className="h-7 w-7" />
-        ) : (
-          <Image src={manueIcon} alt="Menu" className="h-7 w-7" />
-        )}
+        {/* Menu Icon (visible when closed) */}
+        <Image
+          src={manueIcon}
+          alt="Menu"
+          className={`h-7 w-7 absolute transition-all transform duration-300 ease-in-out ${
+            open
+              ? "scale-0 opacity-0 delay-150"
+              : "scale-100 opacity-100 delay-0"
+          }`}
+        />
+
+        {/* Close Icon (visible when open) */}
+        <Image
+          src={closeIcon}
+          alt="Close"
+          className={`h-7 w-7 absolute transition-all transform duration-300 ease-in-out ${
+            open
+              ? "scale-100 opacity-100 delay-0"
+              : "scale-0 opacity-0 delay-150"
+          }`}
+        />
       </button>
     </>
   );
