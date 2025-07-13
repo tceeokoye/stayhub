@@ -13,8 +13,6 @@ import closeIcon from "@/assets/icon/x-close.svg";
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [showStickyHeader, setShowStickyHeader] = useState(false);
-  const [scrollDirectionUp, setScrollDirectionUp] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
   const [isClosing, setIsClosing] = useState(false);
 
@@ -29,6 +27,7 @@ export default function Header() {
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
+
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
