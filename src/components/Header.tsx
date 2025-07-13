@@ -48,7 +48,6 @@ export default function Header() {
           priority
         />
       </Link>
-
       <div className="hidden items-center gap-3 md:flex">
         <button className="flex items-center gap-2 text-base leading-6 text-black font-geistNormal">
           Become an agent
@@ -64,7 +63,13 @@ export default function Header() {
       </div>
 
       <button
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={() => {
+          if (open) {
+            handleClose(); // play slide‑up, then unmount
+          } else {
+            setOpen(true); // show modal with slide‑down
+          }
+        }}
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
         className="md:hidden w-10.5 h-10.5 rounded-full bg-[#FAFAFA] flex items-center justify-center"

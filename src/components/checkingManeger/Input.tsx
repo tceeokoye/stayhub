@@ -21,6 +21,10 @@ interface InputProps {
 export default function Input({ onSearch, suggestions = [] }: InputProps) {
   const [value, setValue] = useState("");
   const [isMobile, setIsMobile] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [closing, setClosing] = useState(false);
+
+
 
   // Handle responsive placeholder text
   useEffect(() => {
@@ -39,7 +43,22 @@ export default function Input({ onSearch, suggestions = [] }: InputProps) {
       )
       .slice(0, 5);
   }, [value, suggestions]);
+  useEffect(() => {
+    const hasResults = value.trim() && filtered.length > 0;
 
+    if (hasResults) {
+      setClosing(false);
+      setShowDropdown(true);
+    } else if (showDropdown && !closing) {
+      // start exit animation, then unmount after it finishes
+      setClosing(true);
+      const t = setTimeout(() => {
+        setShowDropdown(false);
+        setClosing(false);
+      }, 350); // keep in sync with CSS duration
+      return () => clearTimeout(t);
+    }
+  }, [value, filtered, showDropdown, closing]);
   // When user types or clicks a result
   const triggerSearch = (term: string) => {
     setValue(term);
@@ -68,25 +87,29 @@ export default function Input({ onSearch, suggestions = [] }: InputProps) {
           />
 
           {/* Modal dropdown for top 3 results */}
-          {value && filtered.length > 0 && (
-            <div className="absolute z-50 w-full bg-white border px-[12px] py-[18px] border-gray-200 rounded-3xl shadow-md mt-3 ">
+          {showDropdown && (
+            <div
+              className={`absolute z-50 w-full bg-white border px-[12px] py-[18px] border-gray-200 rounded-3xl shadow-md mt-3
+                ${closing ? "animate-slideUpModal" : "animate-slideDownModal"}`}
+            >
               {filtered.map((h) => (
                 <button
                   key={h.id}
-                  onClick={() => triggerSearch(h.location)}
+                  onClick={() => {
+                    triggerSearch(h.location);
+                    setClosing(true); // close after selection
+                  }}
                   className="flex w-full items-center gap-3 p-3 hover:bg-gray-50 text-left"
                 >
-                  <span className="relative w-4 h-4 shrink-0 overflow-hidden rounded">
+                  <span className="relative w-4 h-4 shrink-0">
                     <Image
                       src={locationIcon}
-                      alt={locationIcon}
+                      alt=""
                       fill
                       className="object-cover"
                     />
                   </span>
-                  <span className="text-sm">
-                    <span className="text-gray-600">{h.location}</span>
-                  </span>
+                  <span className="text-sm text-gray-600">{h.location}</span>
                 </button>
               ))}
             </div>
