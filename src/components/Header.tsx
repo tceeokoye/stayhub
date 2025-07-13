@@ -87,11 +87,11 @@ export default function Header() {
     <>
       {/* Main Header — hides when scroll past 66px and scrolling up */}
       <div
-        className={`fixed top-0 inset-x-0 z-50 bg-white shadow-md transition-transform duration-500 ${
-          showStickyHeader ? "-translate-y-full" : "translate-y-0"
-        }`}
+        className={`fixed top-0 inset-x-0 z-50 bg-white border-b border-gray-100 shadow-md
+    ${showStickyHeader ? "animate-slideUp" : "translate-y-0"}
+  `}
       >
-        <div className="h-[66px] md:h-[68px] px-[20px] md:px-[70px] flex items-center justify-between border-b border-[#FAFAFA]">
+        <div className="h-[66px] md:h-[68px] px-[20px] md:px-[70px] flex items-center justify-between">
           {renderHeaderContent()}
         </div>
       </div>
