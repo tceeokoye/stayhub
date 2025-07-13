@@ -15,7 +15,7 @@ export default function CheckingManager() {
   };
 
   return (
-    <div className="w-full px-5 md:px-[70px] mt-[64.6px]">
+    <div className="w-full px-6.5 md:px-[70px] mt-[64.6px]">
       <TitleBox />
       <Input suggestions={hotelData} onSearch={handleSearch} />
       <HotelList searchTerm={searchTerm} currentPage={currentPage} />

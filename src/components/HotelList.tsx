@@ -146,7 +146,7 @@ export default function HotelList({ searchTerm, currentPage }: HotelListProps) {
   }, [filtered, currentPage]);
 
   return (
-    <div className="px-[25.5px] md:px-[70px] mx-auto">
+    <div className=" mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[21px]">
         {paginatedHotels.length === 0 ? (
           <p className="col-span-full text-center text-gray-500">
