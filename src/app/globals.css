@@ -22,7 +22,6 @@
 }
 
 @theme {
-  
   --color-ffffff: #ffffff;
   --color-FAFAFA: #fafafa;
   --color-0f0f0f: #0f0f0f;
@@ -51,10 +50,56 @@
   --font-size-28: 28px;
 }
 
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDownModal {
+  0% {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideUpModal {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+}
+
+
+
 @layer utilities {
   .shadow-custom {
-  box-shadow: 0px 24px 39px 0px #919EB138;
+    box-shadow: 0px 24px 39px 0px #919eb138;
+  }
+  /* ─── slide‑down animations ────────────────────────── */
+.animate-slideUpModal {
+  animation: slideUpModal 0.4s ease-in-out forwards;
 }
+  /* Utility classes (names match what the component already uses) */
+  .animate-slideDown {
+    animation: slideDown 0.5s ease-in-out forwards;
+  }
+
+  .animate-slideDownModal {
+    animation: slideDownModal 0.4s ease-in-out forwards;
+  }
 
   .text-24p {
     font-size: var(--font-size-24);
@@ -275,17 +320,14 @@
     width: 129px;
     height: 32.4px;
   }
-  .mobilemain{
+  .mobilemain {
     width: 100%;
     height: 100%;
     padding-left: 32px;
     padding-right: 32px;
-   
   }
   .mobilInput {
     width: 100%;
-  
-  
   }
 }
 
